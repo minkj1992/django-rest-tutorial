@@ -5,6 +5,7 @@ from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 from snippets.serializers import UserSerializer
 
+
 class SnippetList(generics.ListCreateAPIView):
     """
     List all code snippets or crete a new snippet.
@@ -16,7 +17,8 @@ class SnippetList(generics.ListCreateAPIView):
     # generics.ListCreateAPIView.post() -> self.create(..., owner) 
     # Also Validation with Request
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(owner=selfe.request.user)
+
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -32,6 +34,7 @@ class UserList(generics.ListAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class UserDetail(generics.RetrieveAPIView):
     """
