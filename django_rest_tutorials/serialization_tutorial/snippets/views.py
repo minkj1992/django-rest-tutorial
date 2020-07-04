@@ -21,7 +21,7 @@ class SnippetList(generics.ListCreateAPIView):
     # generics.ListCreateAPIView.post() -> self.create(..., owner) 
     # Also Validation with Request
     def perform_create(self, serializer):
-        serializer.save(owner=selfe.request.user)
+        serializer.save(owner=self.request.user)
 
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
