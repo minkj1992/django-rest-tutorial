@@ -8,5 +8,8 @@ Django REST Quickstart tutorial
 2. [Requests and Responses](https://www.django-rest-framework.org/tutorial/2-requests-and-responses/): `git tag v2`
    - Django REST with request and response and url patterns
 
-3. [Class-based Views](https://www.django-rest-framework.org/tutorial/3-class-based-views/)
+3. [Views](https://www.django-rest-framework.org/tutorial/3-class-based-views/)
    - DRY(Don't repeat yourself)
+     - FBV -> CBV
+   - Generic Class-Based Views
+     - CBV -> generic class-based views
