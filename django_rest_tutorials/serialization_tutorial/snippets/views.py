@@ -9,7 +9,7 @@ from snippets.serializers import SnippetSerializer
 @csrf_exempt
 def snippet_list(request):
     """List all code snippets or crete a new snippet."""
-    if request.method == 'GET:
+    if request.method == 'GET':
         snippets = Snippet.objects.all()
         serializer = SnippetSerializer(snippets, many=True)
         return JsonResponse(serializer.data, safe=False)
@@ -45,3 +45,16 @@ def snippet_detail(request, pk):
     elif request.method == 'DELETE':
         snippet.delete()
         return HttpResponse(status=204) #No Content
+
+
+
+def create_serializer():
+    """This is for test code to generate snippet and serializer"""
+    for snippet in SnippetSerializer.objects.all():
+        serializer = SnippetSerializer(snippet)
+        content = JSONRenderer().render(serializer.data)
+        stream = io.BytesIO(content)
+        data = JSONParser().parse(stream)
+        serializer = SnippetSerializer(data=data)
+        serializer.is_valid()
+        serializer.save()
