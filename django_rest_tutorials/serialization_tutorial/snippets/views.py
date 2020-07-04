@@ -11,7 +11,12 @@ class SnippetList(generics.ListCreateAPIView):
     """
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
-
+    
+    # Associate snippets with Users (@Override)
+    # generics.ListCreateAPIView.post() -> self.create(..., owner) 
+    # Also Validation with Request
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -34,4 +39,3 @@ class UserDetail(generics.RetrieveAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
