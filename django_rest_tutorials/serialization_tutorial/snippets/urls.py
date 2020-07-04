@@ -5,6 +5,8 @@ from snippets import views
 urlpatterns = [
     path('snippets/', views.SnippetList.as_view()),
     path('snippets/<int:pk>/', views.SnippetDetail.as_view()),
+    path('users/', views.UserList.as_view()),
+    path('users/<int:pk>/', views.UserDetail.as_view()),
 ]
 
 # url에 .json, .html, .api등을 추가하여 타입을 요청할 수 있다.

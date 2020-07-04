@@ -18,6 +18,7 @@ class Snippet(models.Model):
     language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
     style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     # Authentication & Permission
+    # reverse relation (Snippet.owner && auth.User.snippets ok)
     owner = models.ForeignKey(
         'auth.User', related_name='snippets', on_delete=models.CASCADE)
     # To store highlighted HTML repr of the code
@@ -27,6 +28,10 @@ class Snippet(models.Model):
         ordering = ('created', )
     
     def save(self, *args, **kwargs):
+        """
+        Use the `pygments` library to create a highlighted HTML
+        representation of the code snippet.
+        """
         lexer = get_lexer_by_name(self.language)
         linenos = self.linenos and 'table' or False
         options = self.title and {'title': self.title} or dict()
