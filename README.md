@@ -37,4 +37,9 @@ Django REST Quickstart tutorial
      2. rest_test 사이트에 로그인/로그아웃 기능이 있는 url추가 (rest_framework.urls)
      3. 소유자와 readOnly데이터에 대해서만 permission-level을 지정하는 custom permission 모듈 생성하여 view-class permission_class에 추가
 5. [Relationships & Hyperlinked APIs](https://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis/): `git tag v5`
-   -  
+   - Post-Redirect-Get pattern은 rest에서 201 Http-status와 `Location` 헤더를 통해서 redirect해주어야 하는 url을 표현한다.
+   - Entity간의 관계를 다루는 방법은 많으면, `HyperlinkedModelSerializer`를 사용해서 해당 프로젝트는 관계를 표현하였다.
+      - `HyperlinkedIdentityField`: Entity pk
+      - `HyperlinkedRelatedField`: relation표현
+   - Pagination
+   
