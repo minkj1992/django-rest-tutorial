@@ -1,5 +1,13 @@
 # django-rest-tutorial
-Django REST Quickstart tutorial
+> Django REST Quickstart tutorial
+
+`api-server`예시(`127.0.0.1/8000/`)
+
+![](./image/snippet.png)
+
+`coreapit`를 활용한 snippet api 화면(`127.0.0.1/8000/docs`)
+
+![](./image/snippet.png)
 
 
 1. [serialization](https://www.django-rest-framework.org/tutorial/1-serialization/#creating-a-serializer-class): `git tag v1.0.0`
@@ -42,4 +50,13 @@ Django REST Quickstart tutorial
       - `HyperlinkedIdentityField`: Entity pk
       - `HyperlinkedRelatedField`: relation표현
    - Pagination
-   
+
+6. [ViewSets & Routers](https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/): `git tag v6`
+   1. viewsets
+   2. @action -> custom end point to viewset
+      1. default `GET`
+      2. `@action(url_path = <custom_url>)`사용하면 url을 지정할 수 있다.
+      3. default url은 method name 그 자체이다.
+
+7. coreapi를 활용한 snippet 문서화
+   1. 최신 버전은 [`openapi`](https://www.django-rest-framework.org/community/3.10-announcement/)를 사용하길 권장한다.
