@@ -35,4 +35,4 @@ Django REST Quickstart tutorial
      1. views의 필요한 클래스들에게 permission_class 필드 등록하여 검사 해주어야 하는 범위 지정
         - 해당 필드를 명시하지 않으면 permission 검사는 지정하지 않게되며 500 HTTP에러와 Django Value Error 메시지가 전달된다. 즉 클라이언트가 예상한 데이터 타입을 return 하지 못했다. 
      2. rest_test 사이트에 로그인/로그아웃 기능이 있는 url추가 (rest_framework.urls)
-     3. 소유자와 readOnly데이터에 대해서만 permission-level을 지정하는 custom permission 모듈 생성하여 
+     3. 소유자와 readOnly데이터에 대해서만 permission-level을 지정하는 custom permission 모듈 생성하여 view-class permission_class에 추가
