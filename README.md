@@ -21,3 +21,18 @@ Django REST Quickstart tutorial
    - 인증된 사용자만 스니펫을 만들 수 있습니다.
    - 스니펫을 만든 사람 만 업데이트하거나 삭제할 수 있습니다.
    - 인증되지 않은 요청에는 전체 읽기 전용 액세스 권한이 있어야합니다.
+   - Associating
+     1. snippet model
+        1. fk field 추가 및 관계/삭제 관리 설정
+        2. .save() override하여 필요한 필드 초기화
+     2. serializer에 user 클래스 추가
+        1. User application단에서 control해주기 위해 serializer단에서도 관계 설정 (views.py에서 관리해주기 위해)
+     3. view에 User관련 클래스 추가
+     4. url에 user route 등록
+     5. fk의 주인인 snippet에서 reverse하게 owner를 field로 가지기 위해 view.SnippetList에 perform_create(owner)추가
+     6. snippet_serializer에 ReadOnlyField로 reverse_fk(owner)를 등록
+   - Authentication & permission
+     1. views의 필요한 클래스들에게 permission_class 필드 등록하여 검사 해주어야 하는 범위 지정
+        - 해당 필드를 명시하지 않으면 permission 검사는 지정하지 않게되며 500 HTTP에러와 Django Value Error 메시지가 전달된다. 즉 클라이언트가 예상한 데이터 타입을 return 하지 못했다. 
+     2. rest_test 사이트에 로그인/로그아웃 기능이 있는 url추가 (rest_framework.urls)
+     3. 소유자와 readOnly데이터에 대해서만 permission-level을 지정하는 custom permission 모듈 생성하여 
